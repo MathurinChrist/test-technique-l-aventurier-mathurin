@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Http\Inventory\Items\BoussoleItem;
+use App\Models\Backpack;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Providers\AppBackpackProvider;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +15,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $backpackService = new AppBackpackProvider();
 
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $backpack = Backpack::factory()->create();
+
+        $items = [
+            new BoussoleItem(1)
+        ];
+
+        foreach ($items as $item) {
+            $backpackService->addItem($backpack, $item);
+        }
     }
 }
