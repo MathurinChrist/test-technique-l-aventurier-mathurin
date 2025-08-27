@@ -22,6 +22,28 @@ class BackpackController extends Controller
         $this->manager = $manager;
     }
 
+    public function createBackpack (Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'weight' => 'required|numeric',
+            'volume' => 'required|numeric',
+        ]);
+         Backpack::create($data);
+
+        $backpacks = Backpack::all()->map(fn($b) => [
+            'id' => $b->id,
+            'name' => $b->name,
+            'volume' => $b->volume,
+            'total_items' => $b->getTotalItems(),
+            'total_weight' => $b->getTotalWeight(),
+        ]);
+
+        return Inertia::render('inventory/backpackList', [
+            'backpacks' => $backpacks->toArray(),
+        ]);
+    }
+
     public function index()
     {
         $backpacks = Backpack::all()->map(fn($b) => [
