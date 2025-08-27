@@ -43,7 +43,7 @@
             </table>
         </div>
 
-        <Link href="/backpacks" class="text-blue-500 text-center border hover:underline"> ← Retour à la liste des sacs</Link>
+        <Link href="/backpacks" class="text-blue-500  border hover:underline"> Retour des sacs</Link>
     </div>
 </template>
 
@@ -51,18 +51,17 @@
 import axios from 'axios';
 
 import { ref } from 'vue';
-
 import { Link } from '@inertiajs/vue3';
 import { usePage, router } from '@inertiajs/vue3';
 
 const page = usePage();
-const backpack = page.props.backpack || {};
 const items = ref(page.props.items || []);
-
 const form = ref({
     type: '',
     quantity: 1
 });
+
+const backpack = page.props.backpack || {};
 
 const addItem = async () => {
     try {

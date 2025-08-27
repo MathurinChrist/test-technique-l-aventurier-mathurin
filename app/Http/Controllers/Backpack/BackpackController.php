@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backpack;
 
 use App\Http\Inventory\Items\BoussoleItem;
 use App\Http\Inventory\Items\CarteItem;
-use App\Http\Inventory\Items\CouteauChasseItem;
 use App\Http\Inventory\Items\GourdeItem;
 use App\Http\Requests\Inventory\BackpackItemRequest;
 use App\Models\Backpack;
@@ -37,6 +36,7 @@ class BackpackController extends Controller
             'backpacks' => $backpacks->toArray(),
         ]);
     }
+
     public function show(Backpack $backpack)
     {
         return Inertia::render('inventory/backpackListItem', [

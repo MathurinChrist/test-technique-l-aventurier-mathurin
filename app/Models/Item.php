@@ -10,14 +10,7 @@ class Item extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'backpack_id',
-        'name',
-        'description',
-        'weight',
-        'quantity',
-        'wear_factor',
-    ];
+    protected $fillable = ['backpack_id', 'name', 'description', 'weight', 'quantity', 'wear_factor',];
 
     public function backpack(): BelongsTo
     {

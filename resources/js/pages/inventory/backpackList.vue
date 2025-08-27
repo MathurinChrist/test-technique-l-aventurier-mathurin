@@ -21,7 +21,7 @@
                     <td class="border px-4 py-2">{{ backpack.total_items }}</td>
                     <td class="border px-4 py-2">
                         <Link :href="backpack.href" class="text-blue-500">
-<!--                         refactor this not to by adding backpackListItem and use emit or other way-->
+<!--                         refactor this by adding backpackListItem and use emit or other way-->
                             Voir
                         </Link>
                      </td>
@@ -40,16 +40,14 @@ const backpacks = page.props.backpacks.map(b => ({
     href: `/backpacks/${b.id}`
 })) || [];
 
-console.log('le sac devient après ajout du href', backpacks)
-
 </script>
 
 <style scoped>
-table {
-    width: 100%;
-}
-th,
-td {
-    text-align: left;
-}
+    table {
+        width: 100%;
+    }
+    th,
+    td {
+        text-align: left;
+    }
 </style>

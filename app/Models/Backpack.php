@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Inventory\Items\ItemAbstract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +13,7 @@ class Backpack extends Model
     protected $fillable = ['name', 'weight', 'volume'];
 
     public function items() {
+        //todo: Item just for persistance outside it is ItemAbstract
         return $this->hasMany(Item::class);
     }
 
